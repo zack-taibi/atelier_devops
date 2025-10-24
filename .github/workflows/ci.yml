@@ -1,0 +1,21 @@
+name: Mon CI # Nom du workflow (visible dans l’onglet "Actions" sur GitHub)
+
+# 🧩 Quand ce workflow doit-il s’exécuter ?
+on:
+  push:                # Déclenchement à chaque push
+    branches: [ main, feature-readme ]  # Sur ces branches uniquement
+
+# 🧠 Liste des jobs à exécuter
+jobs:
+  Construction:        # Nom du job
+    runs-on: ubuntu-latest  # Machine virtuelle Linux utilisée par GitHub
+
+    # ⚙️ Liste des étapes (steps)
+    steps:
+      - name: Récupération du code
+        uses: actions/checkout@v4   # Télécharge le code du dépôt
+
+      - name: Vérification du contenu
+        run: |                     # Exécute plusieurs commandes bash
+          echo "Félicitations, Pipeline CI déclenché avec réussite"
+          ls -l                    # Affiche la liste des fichiers
